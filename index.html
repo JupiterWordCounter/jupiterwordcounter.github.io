@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Word Counter Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: #fff;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 15px;
+      width: 90%;
+      max-width: 800px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2em;
+      color: #fff;
+    }
+    h2, h3 {
+      color: #fff;
+    }
+    p {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+    ul {
+      text-align: left;
+      padding-left: 20px;
+    }
+    ul li {
+      margin: 5px 0;
+    }
+    textarea {
+      width: 80%;
+      height: 250px;
+      margin: 15px auto;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 16px;
+      resize: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+    }
+    textarea:focus {
+      border-color: #6a11cb;
+      box-shadow: 0 0 6px rgba(106, 17, 203, 0.5);
+    }
+    .stats {
+      margin: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      text-align: left;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: rgba(255, 255, 255, 0.8);
+      color: #333;
+      padding: 15px;
+      border-radius: 10px;
+      flex: 1;
+      margin: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+    .stat h3 {
+      margin: 0;
+      font-size: 1.5em;
+      color: #6a11cb;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    .btn {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+    .info {
+      text-align: left;
+    }
+    .info a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+    .info a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Enhanced Word Counter Tool</h1>
+    <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+    <div class="stats">
+      <div class="stat">
+        <h3 id="wordCount">0</h3>
+        <p>Words</p>
+      </div>
+      <div class="stat">
+        <h3 id="charCount">0</h3>
+        <p>Characters (with spaces)</p>
+      </div>
+      <div class="stat">
+        <h3 id="charCountNoSpaces">0</h3>
+        <p>Characters (without spaces)</p>
+      </div>
+      <div class="stat">
+        <h3 id="sentenceCount">0</h3>
+        <p>Sentences</p>
+      </div>
+      <div class="stat">
+        <h3 id="paragraphCount">0</h3>
+        <p>Paragraphs</p>
+      </div>
+      <div class="stat">
+        <h3 id="readingTime">0</h3>
+        <p>Reading Time (secs)</p>
+      </div>
+      <div class="stat">
+        <h3 id="speakingTime">0</h3>
+        <p>Speaking Time (secs)</p>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="btn" onclick="clearText()">Clear Text</button>
+    </div>
+  </div>
+
+  <div class="container info">
+    <h2>About Jupiter Word Counter</h2>
+    <p>Jupiter Word Counter is a simple yet powerful solution designed to meet all your word processing needs. Whether you're a writer, student, editor, or content creator, this tool provides you with valuable insights into your text, helping you refine and enhance your content effectively.</p>
+
+    <h2>How It Works:</h2>
+    <p>Our tool features a user-friendly interface with a designated text area where you can paste or type your content. Once entered, the tool instantly analyzes your text and provides detailed metrics, making it ideal for anyone who needs to monitor their word and character count.</p>
+
+    <h2>Features You’ll Love:</h2>
+    <ul>
+      <li><strong>Word Count:</strong> Get an accurate count of the words in your text, helping you meet word limits for assignments, articles, or any other written content.</li>
+      <li><strong>Character Count (With and Without Spaces):</strong> Monitor the number of characters in your text, both including and excluding spaces, which is particularly useful for crafting social media posts or adhering to character limits.</li>
+      <li><strong>Sentence Count:</strong> Identify the total number of sentences in your content to evaluate its structure and readability.</li>
+      <li><strong>Paragraph Count:</strong> Break down your content into paragraphs for better organization and clarity.</li>
+      <li><strong>Estimated Reading Time:</strong> Find out how long it would take an average reader to go through your text. This is especially useful for bloggers and content marketers to tailor their content for audience engagement.</li>
+      <li><strong>Estimated Speaking Time:</strong> Know how long it would take to deliver your content as a speech or presentation, making it an excellent tool for public speakers and educators.</li>
+    </ul>
+
+    <h2>Why Choose Our Tool?</h2>
+    <ul>
+      <li><strong>Accuracy:</strong> Our tool ensures precise results every time, no matter the length or complexity of your text.</li>
+      <li><strong>Ease of Use:</strong> The interface is clean and intuitive, making it accessible for users of all technical backgrounds.</li>
+      <li><strong>Versatility:</strong> From academic essays to professional scripts, our tool is suitable for all types of content.</li>
+    </ul>
+
+    <p>Whether you’re preparing a blog post, proofreading an assignment, or practicing a speech, our Word Counter Tool has everything you need to perfect your text. Best of all, it’s completely free to use—no downloads or sign-ups required. Simply type, analyze, and improve!</p>
+
+    <p>Try our Word Counter Tool today and elevate your writing process to the next level!</p>
+
+    <h3>Contact Us</h3>
+    <p>We are open for feedback and suggestions. Please reach us at <a href="mailto:jupiter.tool@gmail.com">jupiter.tool@gmail.com</a>.</p>
+  </div>
+
+  <script>
+    const textInput = document.getElementById('textInput');
+    const wordCount = document.getElementById('wordCount');
+    const charCount = document.getElementById('charCount');
+    const charCountNoSpaces = document.getElementById('charCountNoSpaces');
+    const sentenceCount = document.getElementById('sentenceCount');
+    const paragraphCount = document.getElementById('paragraphCount');
+    const readingTime = document.getElementById('readingTime');
+    const speakingTime = document.getElementById('speakingTime');
+
+    textInput.addEventListener('input', () => {
+      const text = textInput.value;
+      let  words = text.trim().split(/\s+/).filter(word => word !== '');
+      const characters = text.length;
+      const charactersNoSpaces = text.replace(/\s+/g, '').length;
+
+      const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim() !== '').length;
+      const paragraphs = text.split(/\n+/).filter(paragraph => paragraph.trim() !== '').length;
+
+      // Reading time: Average reading speed is ~200 words per minute
+      let readingTimeMinutes = 0;
+
+      // Speaking time: Average speaking speed is ~130 words per minute
+      let speakingTimeSeconds = 0;
+
+      // Loop through each word and calculate speaking time based on its length
+      words.forEach(word => {
+        readingTimeMinutes += word.length/12;
+        console.log(readingTimeMinutes);
+        console.log(word.length);
+      });
+
+      // speaking --22
+      // reading -- 25
+
+      words.forEach(word => {
+        speakingTimeSeconds += word.length/15;
+      });
+      
+      speakingTimeSeconds = Math.ceil(speakingTimeSeconds);
+      
+      readingTimeMinutes = Math.floor(readingTimeMinutes);
+
+
+      // Update the stats
+      wordCount.textContent = words.length;
+      charCount.textContent = characters;
+      charCountNoSpaces.textContent = charactersNoSpaces;
+      sentenceCount.textContent = sentences;
+      paragraphCount.textContent = paragraphs;
+      readingTime.textContent = readingTimeMinutes;
+      speakingTime.textContent = speakingTimeSeconds;
+    });
+
+    function clearText() {
+      textInput.value = '';
+      wordCount.textContent = 0;
+      charCount.textContent = 0;
+      charCountNoSpaces.textContent = 0;
+      sentenceCount.textContent = 0;
+      paragraphCount.textContent = 0;
+      readingTime.textContent = 0;
+      speakingTime.textContent = 0;
+    }
+  </script>
+
+
+</body>
+</html>
